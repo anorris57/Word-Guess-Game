@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Periodic Table Hangman</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <link href="assets/css/reset.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
   </head>
   
   <body onload="startUp()">
-    <h1>Periodic Table Hangman Game</h1>
-
-    <p>Click any letter key to start!</p>
+      <img src="assets/images/periodicTable.jpg" alt"Periodic Table" class="imagePeroidicTable img-responsive">
+      <div class="centered">
+        <div class="jumbotron">
+          <h1>Periodic Table Hangman Game</h1>
+          <p>Press any letter key to start!</p>
+        </div>
+        <div class="card-deck">
+            <div class="card bg-primary">
+              <div class="card-body text-center">
+                <p class="card-text" id="choice"></p>
+                <p class="card-text" id="all"></p>
+              </div>
+            </div>
+            <div class="card bg-warning">
+              <div class="card-body text-center">
+                <p class="card-text" id="answer"></p>
+                <p class="card-text" id="counter"></p>
+              </div>
+            </div>
+            <div class="card bg-success">
+              <div class="card-body text-center">
+                <p class="card-text" id="result"></p>
+              </div>
+            </div>
+            <div class="card bg-danger">
+              <div class="card-body text-center">
+                <p>Want to learn more?</p>
+                <p class="card-text"><a href="https://www.ptable.com/" target="_blank"> Visit Dynanmic Periodic Table.com!</a></p>
+              </div>
+            </div>  
+          </div>
+      </div>
+    </div>
+    
     
 
     <!--Breakdown: 1.User input   2. compare letter to word  3. Return results of comparison 4.continue game  -->
-    <p id="totalClicks"></p>
-    <p id="choice"></p>
-    <p id="answer"></p>
-    <p id="correct"></p>
-    <p id="all"></p>
-    <p id="counter"></p>
-    <p id="result"></p>
 
     <script>
     //here we define our aray of words to chose from
     /*var randomElementsArr = ["hydrogen", "oxygen", "nitrogen", "silver", "lead", "gold", "iron", "lithuim", "helium", "cobalt"];*/
-    var randomElementsArr = ["hydrogen", "lithium","gold","silver","helium","gallium","boron","neon"]
+    var randomElementsArr = ["hydrogen", "lithium","gold","silver","helium","gallium","boron","neon","xeon","zinc","calcium","sodium"]
 
     var randomElement = randomElementsArr[Math.floor(Math.random() * randomElementsArr.length)];
     console.log(randomElement);
@@ -86,7 +112,11 @@
     document.getElementById("answer").innerHTML = answerArray.join(" "); 
     //end result of game
     if (remainingGuess === 0) {
-      document.getElementById("result").innerHTML = "The correct answer is " + randomElement + " ." + "<br>   Refresh page to try again.";
+      document.getElementById("result").innerHTML = "The correct answer is " + randomElement; //+ " ." + "<br>   Refresh page to try again.";
+      function myFunction(){
+        document.location.reload();
+      }
+      setTimeout(myFunction, 5000);
       lockGame = true;
     }  
 }
