@@ -1,5 +1,5 @@
- /*var randomElementsArr = ["hydrogen", "oxygen", "nitrogen", "silver", "lead", "gold", "iron", "lithuim", "helium", "cobalt"];*/
-var randomElementsArr = ["hydrogen", "lithium","gold","silver","helium","gallium","boron","neon","xeon","zinc","calcium","sodium"]
+ 
+var randomElementsArr = ["hydrogen", "helium","gold","silver","argon","oxygen","nitrogen","neon","xeon","zinc","bromine","sodium"]
 
 var randomElement = randomElementsArr[Math.floor(Math.random() * randomElementsArr.length)];
     console.log(randomElement);
@@ -32,7 +32,7 @@ function startUp(){
     
 document.onkeyup = function(event) {
 // Determines which key was pressed.The event.key is a built in Javascript function
-    if (lockGame !== true);
+  
     var userGuess = event.key;
     
     var userInput = userGuess.toLowerCase();
@@ -57,15 +57,26 @@ document.onkeyup = function(event) {
     document.getElementById("counter").innerHTML = "Number of guesses remaining " + remainingGuess;
     document.getElementById("answer").innerHTML = answerArray.join(" "); 
     //end result of game
-    if (remainingGuess === 0) {
-      document.getElementById("result").innerHTML = "The correct answer is " + randomElement; //+ " ." + "<br>   Refresh page to try again.";
-      function myFunction(){
-        document.location.reload();
+    if ((remainingGuess === 0) && 
+        (answerArray.join() === userChoice.join())) {
+         document.getElementById("result").innerHTML = "The correct answer is " + randomElement + ". You win!";
+         function myFunction(){
+         document.location.reload();
       }
-      setTimeout(myFunction, 5000);
-      lockGame = true;
-    }  
-}
+         setTimeout(myFunction, 5000);
+         
+    }  //1st condition close 
+      if ((remainingGuess === 0) && 
+        (answerArray.join() !== userChoice.join())) {
+         document.getElementById("result").innerHTML = "The correct answer is " + randomElement + ". You lose!";
+         function myFunction(){
+         document.location.reload();
+         }
+         setTimeout(myFunction, 5000);
+        
+        }
+
+}//close of document.onKeyup close
     
     
   
