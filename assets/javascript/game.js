@@ -15,7 +15,7 @@ var randomElementsArr = [
 
 var randomElement =
   randomElementsArr[Math.floor(Math.random() * randomElementsArr.length)];
-console.log(randomElement);
+//console.log(randomElement);
 
 //some global variables (can be used by any functions)
 var s;
@@ -23,7 +23,6 @@ var count = 0; //counter
 //empty array to store the guesses
 var answerArray = [];
 var userChoice = [];
-var lockGame = false;
 var inWord = false;
 
 //here we fill the answer array with under scores
@@ -44,7 +43,7 @@ document.onkeyup = function(event) {
   var userGuess = event.key;
 
   var userInput = userGuess.toLowerCase();
-  console.log(userInput);
+  //console.log(userInput);
   for (var j = 0; j < randomElement.length; j++) {
     if (randomElement[j] === userInput) {
       answerArray[j] = userInput;
